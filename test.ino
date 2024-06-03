@@ -101,7 +101,12 @@ void loop() {
               client.print(h);
               client.print(" %</p>");
             }
-            
+
+            // 시리얼 모니터에서 온도 확인
+            Serial.print("Temperature: ");
+            Serial.print(t);
+            Serial.println(" °C");
+
             // 모터 제어 버튼
             client.print("<p>Motor State: ");
             if (motorState) {
@@ -142,7 +147,7 @@ void loop() {
 
     // 서보 제어
     if (request.indexOf("GET /servoopen") != -1) {
-      servo.write(90); // 90도로 서보 모터 회전 (열기)
+      servo.write(140); // 90도로 서보 모터 회전 (열기)
     } else if (request.indexOf("GET /servoclose") != -1) {
       servo.write(0); // 0도로 서보 모터 회전 (닫기)
     }
